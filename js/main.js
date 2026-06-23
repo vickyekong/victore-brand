@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  document.documentElement.classList.add('js');
+
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* --------------------------------------------------------------------------

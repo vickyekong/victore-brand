@@ -433,19 +433,19 @@ button, input, textarea {
   50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
 }
 
-/* Hero reveal animation */
-.reveal {
+/* Hero reveal animation — content visible by default; hidden only when JS runs */
+html.js .reveal {
   opacity: 0;
   transform: translateY(24px);
 }
 
-.reveal.visible {
+html.js .reveal.visible {
   animation: fadeUp 0.7s var(--ease-out) forwards;
 }
 
-.reveal[data-delay="1"].visible { animation-delay: 0.1s; }
-.reveal[data-delay="2"].visible { animation-delay: 0.2s; }
-.reveal[data-delay="3"].visible { animation-delay: 0.35s; }
+html.js .reveal[data-delay="1"].visible { animation-delay: 0.1s; }
+html.js .reveal[data-delay="2"].visible { animation-delay: 0.2s; }
+html.js .reveal[data-delay="3"].visible { animation-delay: 0.35s; }
 
 @keyframes fadeUp {
   to {
@@ -455,13 +455,13 @@ button, input, textarea {
 }
 
 /* Scroll reveal (non-hero) */
-.section .reveal:not(.hero-inner .reveal) {
+html.js .section .reveal:not(.hero-inner .reveal) {
   opacity: 0;
   transform: translateY(32px);
   transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
 }
 
-.section .reveal.in-view {
+html.js .section .reveal.in-view {
   opacity: 1;
   transform: translateY(0);
 }
