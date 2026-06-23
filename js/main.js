@@ -187,7 +187,7 @@
           'Name: ' + name + '\nEmail: ' + email + '\n\n' + message
         );
 
-        window.location.href = 'mailto:info@novusafricang.com?subject=' + subject + '&body=' + body;
+        window.location.href = 'mailto:victore@novus.africa?subject=' + subject + '&body=' + body;
       });
     }
 

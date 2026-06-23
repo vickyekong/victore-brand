@@ -176,11 +176,12 @@ button, input, textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
+  width: 40px;
   height: 36px;
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 0.875rem;
   font-weight: 600;
+  letter-spacing: -0.03em;
   color: var(--bg);
   background: var(--accent);
   border-radius: 2px;
@@ -1070,9 +1071,9 @@ html.js .section .reveal.in-view {
 }
 
 .logo--footer .logo-mark {
-  width: 28px;
+  width: 32px;
   height: 28px;
-  font-size: 1rem;
+  font-size: 0.6875rem;
 }
 
 .logo--footer .logo-text {
