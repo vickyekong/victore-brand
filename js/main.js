@@ -24,22 +24,42 @@
     }
 
     const menuToggle = document.getElementById('menuToggle');
+    const menuClose = document.getElementById('menuClose');
+    const menuOverlay = document.getElementById('menuOverlay');
     const nav = document.getElementById('nav');
 
-    if (menuToggle && nav) {
-      menuToggle.addEventListener('click', () => {
-        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-        menuToggle.setAttribute('aria-expanded', String(!expanded));
-        nav.classList.toggle('open');
-        document.body.style.overflow = expanded ? '' : 'hidden';
+    function openMenu() {
+      if (!menuOverlay || !menuToggle) return;
+      menuToggle.setAttribute('aria-expanded', 'true');
+      menuOverlay.classList.add('open');
+      menuOverlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('menu-open');
+    }
+
+    function closeMenu() {
+      if (!menuOverlay || !menuToggle) return;
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuOverlay.classList.remove('open');
+      menuOverlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('menu-open');
+    }
+
+    if (menuToggle && menuOverlay) {
+      menuToggle.addEventListener('click', openMenu);
+      if (menuClose) menuClose.addEventListener('click', closeMenu);
+
+      menuOverlay.addEventListener('click', (e) => {
+        if (e.target === menuOverlay) closeMenu();
       });
 
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuOverlay.classList.contains('open')) closeMenu();
+      });
+    }
+
+    if (nav) {
       nav.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-          menuToggle.setAttribute('aria-expanded', 'false');
-          nav.classList.remove('open');
-          document.body.style.overflow = '';
-        });
+        link.addEventListener('click', closeMenu);
       });
     }
 
